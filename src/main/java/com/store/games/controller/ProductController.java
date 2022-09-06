@@ -35,6 +35,10 @@ public class ProductController {
                 .map(res-> ResponseEntity.ok(res))
                 .orElse(ResponseEntity.notFound().build());
     }
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<Product>> getByName(@PathVariable String name){
+        return ResponseEntity.ok(productRepository.findAllByNameContainingIgnoreCase(name));
+    }
     @PostMapping
     public ResponseEntity<Product> postProduct(@Valid @RequestBody Product product){
         return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(product));
