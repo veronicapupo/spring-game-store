@@ -26,6 +26,9 @@ public class Product {
     @JsonIgnoreProperties("product")
     private Category category;
 
+    @ManyToOne
+    @JsonIgnoreProperties("product")
+    private User user;
     public Category getCategory() {
         return category;
     }
@@ -64,5 +67,13 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
